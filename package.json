@@ -1,0 +1,18 @@
+{
+  "name": "plasmid-verify",
+  "version": "1.0.0",
+  "private": true,
+  "description": "环形质粒待验证片段标记工具：可旋转视图、零基片段坐标、原子注释保存 API",
+  "type": "module",
+  "scripts": {
+    "start": "node server/server.js",
+    "build": "node scripts/build.js",
+    "test": "node --test \"test/*.test.js\"",
+    "smoke": "node scripts/smoke.js",
+    "healthcheck": "node scripts/healthcheck.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}

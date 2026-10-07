@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pVERIFY 质粒待验证片段标记</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>环状质粒片段标记</h1>
+    <div id="plasmid-meta" class="meta">加载中…</div>
+  </header>
+
+  <main class="layout">
+    <section class="panel map-panel">
+      <div class="origin-bar">
+        <label for="origin-input">显示起点（碱基，零基）</label>
+        <input id="origin-input" type="number" min="0" step="1" value="0" />
+        <button id="origin-apply" type="button">旋转显示</button>
+        <button id="origin-reset" type="button" class="ghost">回到参考起点 0</button>
+        <span id="origin-notice" class="notice"></span>
+      </div>
+
+      <div class="svg-wrap">
+        <svg id="plasmid-svg" viewBox="0 0 640 640" preserveAspectRatio="xMidYMid meet"
+             role="img" aria-label="环状质粒图，可沿顺时针方向拖动创建片段"></svg>
+      </div>
+      <p class="hint">在琥珀色环带上<b>按下并顺时针拖动</b>创建片段；可拖动两端手柄微调。坐标始终使用实验室登记的原始序列，旋转视图不改变片段覆盖的碱基。</p>
+    </section>
+
+    <aside class="panel side-panel">
+      <h2>待验证片段</h2>
+      <div id="draft-box" class="draft-box hidden">
+        <label for="frag-name">片段名称</label>
+        <input id="frag-name" type="text" maxlength="60" placeholder="例如 verify-insert-1" />
+        <div id="frag-range" class="range"></div>
+        <div id="frag-wrap" class="badge hidden">跨越原始序列末端</div>
+        <div class="draft-actions">
+          <button id="save-btn" type="button">保存片段</button>
+          <button id="cancel-btn" type="button" class="ghost">放弃</button>
+        </div>
+      </div>
+      <p id="no-draft" class="muted">尚未框选片段。</p>
+
+      <div id="error-banner" class="banner error hidden"></div>
+      <div id="ok-banner" class="banner ok hidden"></div>
+
+      <h2>已保存注释 <span id="ann-count" class="count"></span></h2>
+      <ul id="ann-list" class="ann-list"></ul>
+      <p class="muted small">参考起点由 GET /api/plasmid 的 referenceStart 固定给出；保存经 PUT /api/annotations 原子替换完整注释集。</p>
+    </aside>
+  </main>
+
+  <script type="module" src="/dist/app.js"></script>
+</body>
+</html>
