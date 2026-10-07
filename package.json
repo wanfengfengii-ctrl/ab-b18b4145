@@ -1,0 +1,17 @@
+{
+  "name": "plasmid-fragment-mapper",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Circular plasmid map for marking candidate fragments, with rotatable display origin and coordinates always stored against the registered original sequence.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node --test \"tests/*.test.js\"",
+    "build": "node scripts/build-frontend.js",
+    "smoke": "node scripts/smoke.js",
+    "verify": "npm test && npm run build && node scripts/smoke.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

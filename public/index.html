@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>环状质粒片段标记</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>环状质粒片段标记</h1>
+    <p class="subtitle">坐标始终以实验室登记的原始序列为准（零基起点 + 正整数长度）；旋转仅改变显示。</p>
+  </header>
+
+  <main class="layout">
+    <section class="map-panel" aria-label="环状质粒图">
+      <svg id="plasmid-map" viewBox="-290 -290 580 580" role="img"
+           aria-label="环状质粒图：在圆环上按下并沿顺时针拖动以创建片段"></svg>
+      <p class="hint">在圆环轨道上按下并<b>沿顺时针</b>拖动以创建片段；选区自动吸附到整数碱基，可跨越序列末端，但不能覆盖整圈。</p>
+    </section>
+
+    <aside class="side-panel">
+      <section class="card">
+        <h2>显示设置</h2>
+        <label class="field">
+          <span>显示起点（bp，仅旋转视图）</span>
+          <input id="rotation-number" type="number" min="0" step="1" value="0">
+        </label>
+        <input id="rotation-range" type="range" min="0" step="1" value="0" aria-label="显示起点滑块">
+        <p class="note">旋转或调整窗口大小不会改变片段覆盖的碱基集合。</p>
+      </section>
+
+      <section class="card">
+        <h2>待验证片段</h2>
+        <p id="selection-readout" class="readout">尚未选择片段。</p>
+        <label class="field">
+          <span>片段名称</span>
+          <input id="fragment-name" type="text" maxlength="64" placeholder="例如 insert-1">
+        </label>
+        <div class="button-row">
+          <button id="save-btn" type="button">保存片段</button>
+          <button id="clear-btn" type="button" class="secondary">清除选择</button>
+        </div>
+        <p id="status-ok" class="status ok" hidden></p>
+        <p id="status-error" class="status error" hidden></p>
+      </section>
+
+      <section class="card">
+        <h2>已登记注释</h2>
+        <ul id="annotation-list" class="annotation-list"></ul>
+      </section>
+    </aside>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
